@@ -6887,11 +6887,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/gsyo/Documents/Programming/Cloud Computing/Midterm/obj/Release/net9.0/WorkerExtensions/WorkerExtensions.csproj",
+      "projectUniqueName": "/Users/gsyo/Documents/GitHub/Games-API/obj/Release/net9.0/WorkerExtensions/WorkerExtensions.csproj",
       "projectName": "Microsoft.Azure.Functions.Worker.Extensions",
-      "projectPath": "/Users/gsyo/Documents/Programming/Cloud Computing/Midterm/obj/Release/net9.0/WorkerExtensions/WorkerExtensions.csproj",
+      "projectPath": "/Users/gsyo/Documents/GitHub/Games-API/obj/Release/net9.0/WorkerExtensions/WorkerExtensions.csproj",
       "packagesPath": "/Users/gsyo/.nuget/packages/",
-      "outputPath": "/Users/gsyo/Documents/Programming/Cloud Computing/Midterm/obj/Release/net9.0/WorkerExtensions/obj/",
+      "outputPath": "/Users/gsyo/Documents/GitHub/Games-API/obj/Release/net9.0/WorkerExtensions/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/gsyo/.nuget/NuGet/NuGet.Config"

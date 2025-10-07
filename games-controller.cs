@@ -22,7 +22,7 @@ namespace Midterm
     public static class Secrets
     {
         public const string API_HEADER = "Key";
-        public const string API_KEY = "Insert Your Key Here";
+        public const string API_KEY = "Insert Key Here";
     }
 
     public static class GamesController
