@@ -18,27 +18,42 @@ namespace Midterm
         public int ReleaseYear { get; set; }
         public int SteamAppId { get; set; }
     }
+    
+    public static class Secrets
+    {
+        public const string API_HEADER = "Key";
+        public const string API_KEY = "Insert Your Key Here";
+    }
 
     public static class GamesController
     {
         static Dictionary<int, Game> games = new Dictionary<int, Game>();
 
+        private static bool CheckKey(HttpRequest req)
+        {
+            return req.Headers[Secrets.API_HEADER] == Secrets.API_KEY;
+        }
+
         [Function("CreateGame")]
         public static async Task<IActionResult> CreateGame(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "games")] HttpRequest req, FunctionContext executionContext)
         {
+            if (!CheckKey(req))
+            {
+                return new UnauthorizedResult();
+            }
+
             var logger = executionContext.GetLogger("CreateGame");
             logger.LogInformation("Creating a new game.");
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             var requestData = JsonConvert.DeserializeObject<Game>(requestBody);
 
-
             if (requestData == null || string.IsNullOrEmpty(requestData.Title) || requestData.SteamAppId <= 0)
             {
                 return new BadRequestObjectResult("Title and unique non-zero ID are required.");
             }
-       
+
             if (games.ContainsKey(requestData.SteamAppId))
             {
                 return new BadRequestObjectResult("A game with this ID already exists.");
@@ -61,6 +76,11 @@ namespace Midterm
         public static async Task<IActionResult> GetGames(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "games")] HttpRequest req, FunctionContext executionContext)
         {
+            if (!CheckKey(req))
+            {
+                return new UnauthorizedResult();
+            }
+            
             var logger = executionContext.GetLogger("GetGames");
             logger.LogInformation("Getting all games.");
 
@@ -72,6 +92,11 @@ namespace Midterm
             [HttpTrigger(AuthorizationLevel.Function, "put", Route = "games/{steamAppId:int}")] HttpRequest req,
             int SteamAppId, FunctionContext executionContext)
         {
+            if (!CheckKey(req))
+            {
+                return new UnauthorizedResult();
+            }
+
             var logger = executionContext.GetLogger("UpdateGame");
             logger.LogInformation($"Updating game with SteamAppId={SteamAppId}.");
 
@@ -103,6 +128,11 @@ namespace Midterm
             [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "games/{steamAppId:int}")] HttpRequest req,
             int SteamAppId, FunctionContext executionContext)
         {
+            if (!CheckKey(req))
+            {
+                return new UnauthorizedResult();
+            }
+
             var logger = executionContext.GetLogger("DeleteGame");
             logger.LogInformation($"Deleting game with SteamAppId={SteamAppId}.");
 
