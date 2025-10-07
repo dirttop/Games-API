@@ -22,6 +22,8 @@ Create a new terminal and run the controller with ```func start```. Following in
 
 If using ```Version 1.x``` the ```API_KEY``` must be defined in the query header under the specified ```API_HEADER```. EX:
 
-### tab V1.0
-
-tab content  V1.0
+<details>
+<summary>Version 1.0</summary>
+  #### Deploying to Azure
+  Create a Function App with desired settings in the Azure portal, and then deploy to the Function App.
+</details>
