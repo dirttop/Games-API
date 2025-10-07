@@ -6,6 +6,7 @@ Developed for CS-432, Cloud Computing
 #### Introduction
 
 This API, inspired by [SteamDB](https://steamdb.info/), is meant to catalogue and store Steam Games and relevant information about them. 
+For stable builds look to version branches. Main development branch may not function as intended.
 
 #### Getting Started
 
