@@ -1,28 +1,48 @@
 # Games-API
+### Version 1.0
 
 C# REST API with CRUD operations, deployed using Azure App Service. 
 Developed for CS-432, Cloud Computing
 
-#### Introduction
+## Introduction
 
 This API, inspired by [SteamDB](https://steamdb.info/), is meant to catalogue and store Steam Games and relevant information about them. 
 For stable builds look to version branches. Main development branch may not function as intended.
 
-#### Getting Started
+## Getting Started
+This section is if you want to deploy the Games-API on your own machine or Azure subscription. 
+If you would like to use the Games-API, click [here](#using-the-games-api).
 
-Make sure the following packages are installed: 
-```Azure Functions, Azure Resources, Azurite, C#, Thunder Client (For testing, not required)```
+#### Prerequisites
 
-If using ```Version 1.x``` modify the ```API_KEY``` string to any secure string.
-
-If using later versions, check version specific documentation for deployment.
+#### Dependencies
 
 #### Running Locally
 
-Create a new terminal and run the controller with ```func start```. Following initialization local function routes will be generated in the terminal. Use a 
+#### Deployment
 
-If using ```Version 1.x``` the ```API_KEY``` must be defined in the query header under the specified ```API_HEADER```.
+## Using the Games-API
 
-#### Sources
+#### URL
+
+#### Authentication
+
+## Endpoints
+
+#### CreateGame
+
+#### GetGames
+
+#### UpdateGame
+
+#### Delete Game
+
+## Possible Errors
+
+#### Error Types
+
+#### Error Messages
+
+## Sources
 
 [Boilerplate](https://medium.com/dynamics-online/how-to-build-rest-apis-with-azure-functions-b4d26c88aa1d) by Fahad Ahmed
