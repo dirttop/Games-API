@@ -171,7 +171,7 @@ namespace YOUR_NAMESPACE_HERE
 
             games.Remove(SteamAppId);
 
-            return new OkObjectResult(games);
+            return new OkObjectResult($"Game with SteamAppId: {SteamAppId} deleted successfully.");
         }
     }
 }
