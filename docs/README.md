@@ -7,7 +7,7 @@ Developed for CS-432, Cloud Computing
 ## Introduction
 
 This API, inspired by [SteamDB](https://steamdb.info/), is meant to catalogue and store Steam Games and relevant information about them. 
-For stable builds look to version branches. Main development branch may not function as intended.
+For stable builds look to version branches. The main branch is unstable and may be subject to changes.
 
 ## Getting Started
 This section is if you want to deploy the Games-API on your own machine or Azure subscription.
@@ -34,7 +34,8 @@ This section is if you want to deploy the Games-API on your own machine or Azure
 
 &emsp;This project is built in C# with .NET 9.0
 
-<br>&emsp;Navigate to the Azure Functions button in your local workspace and press 'Create Function'
+&emsp;Navigate to the Azure Functions button in your local workspace and press 'Create Function'
+
 > Screenshots show setup in Visual Studio Code
 
 <img width="533" height="335" alt="Screenshot 2025-10-09 at 12 04 11 PM" src="https://github.com/user-attachments/assets/8e94d260-ca76-4700-ab4e-dc25c66f4f53" />
@@ -58,7 +59,8 @@ This section is if you want to deploy the Games-API on your own machine or Azure
 
 &emsp;Create a Function App within Azure prior to deploying with desired settings.
 
-<br>&emsp;Navigate to the Azure Functions button in your local workspace and select 'Deploy to Azure'
+&emsp;Navigate to the Azure Functions button in your local workspace and select 'Deploy to Azure'
+
 > Screenshots show deployment in Visual Studio Code
 <img width="541" height="342" alt="Screenshot 2025-10-09 at 11 52 52 AM" src="https://github.com/user-attachments/assets/710701e0-1f6b-4d85-8065-6603d3e3275d" />
 
@@ -80,6 +82,20 @@ Include the following key in your HTTP request header as a key/value pair:
 
 > **Key: BOwOKpAMg6Za**
 
+## Game Parameters
+> Every game object contains the following JSON parameters, with only Title and SteamAppID being required fields.
+> SteamAppID is a unique value. Official SteamAppID values can be found through [SteamDB](https://steamdb.info/).
+
+```
+{
+    "Title": "Game Title",
+    "Genre": "Genre Name",
+    "Developer": "Developer Name",
+    "ReleaseYear": "Release Year",
+    "SteamAppID": 1
+}
+```
+
 ## Endpoints
 
 ### CreateGame
@@ -90,11 +106,11 @@ Include the following key in your HTTP request header as a key/value pair:
 
 #### Request
 
+### bash / zsh
+```
 ```
 
-```
-
-#### Request Body
+#### Request Body (JSON)
 
 ```
 {
@@ -106,7 +122,8 @@ Include the following key in your HTTP request header as a key/value pair:
 }
 ```
 
-#### Response
+#### Response (JSON)
+### Code: 201
 
 ```
 {
@@ -127,10 +144,13 @@ Include the following key in your HTTP request header as a key/value pair:
 
 #### Request
 
+### bash / zsh
 ```
+curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games/" -H "Key: BOwOKpAMg6Za"
 ```
 
-#### Response
+#### Response (JSON)
+### Code: 200
 
 ```
 {
@@ -159,10 +179,13 @@ Include the following key in your HTTP request header as a key/value pair:
 
 #### Request
 
+### bash / zsh
 ```
+curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games/{SteamAppId:int}" -H "Key: BOwOKpAMg6Za"
 ```
 
-#### Response
+#### Response (JSON)
+### Code: 200
 
 ```
 {
@@ -179,11 +202,16 @@ Include the following key in your HTTP request header as a key/value pair:
 
 >**PUT /api/games/{SteamAppId:int}**
 
-&emsp;Update a games information by their SteamAppID.
+&emsp;Update a games information by their SteamAppID. SteamAppID cannot be updated.
 
 #### Request
 
-#### Response
+### bash / zsh
+```
+```
+
+#### Response (JSON)
+### Code: 200
 
 ```
 {
@@ -203,7 +231,12 @@ Include the following key in your HTTP request header as a key/value pair:
 
 #### Request
 
+### bash / zsh
+```
+```
+
 #### Response
+### Code: 200
 ```
 Game with SteamAppId: 730 deleted successfully.
 ```
@@ -222,6 +255,8 @@ Game with SteamAppId: 730 deleted successfully.
 | DeleteGame | 404   | Game not found. Input valid ID.   |
 
 ## Screenshots
+
+
 
 ## Sources
 
