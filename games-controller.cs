@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Midterm
+namespace //YOUR_NAMESPACE_HERE
 {
     public class Game
     {
