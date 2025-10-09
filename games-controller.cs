@@ -89,7 +89,7 @@ namespace //YOUR_NAMESPACE_HERE
 
         [Function("UpdateGame")]
         public static async Task<IActionResult> UpdateGame(
-            [HttpTrigger(AuthorizationLevel.Function, "put", Route = "games/{steamAppId:int}")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "games/{steamAppId:int}")] HttpRequest req,
             int SteamAppId, FunctionContext executionContext)
         {
             if (!CheckKey(req))
@@ -125,7 +125,7 @@ namespace //YOUR_NAMESPACE_HERE
 
         [Function("DeleteGame")]
         public static async Task<IActionResult> DeleteGame(
-            [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "games/{steamAppId:int}")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "games/{steamAppId:int}")] HttpRequest req,
             int SteamAppId, FunctionContext executionContext)
         {
             if (!CheckKey(req))
