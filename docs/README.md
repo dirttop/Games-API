@@ -91,7 +91,7 @@ Include the following key in your HTTP request header as a key/value pair:
     "Title": "Game Title",
     "Genre": "Genre Name",
     "Developer": "Developer Name",
-    "ReleaseYear": "Release Year",
+    "ReleaseYear": 0000,
     "SteamAppID": 1
 }
 ```
@@ -106,8 +106,18 @@ Include the following key in your HTTP request header as a key/value pair:
 
 #### Request
 
-### bash / zsh
+#### bash / zsh
 ```
+curl -X POST "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games" \
+-H "Content-Type: application/json" \
+-H "Key: BOwOKpAMg6Za" \
+-d '{
+    "Title": "Game Title",
+    "Genre": "Genre Title",
+    "Developer": "Developer Name",
+    "ReleaseYear": 0000,
+    "SteamAppID": 1
+}'
 ```
 
 #### Request Body (JSON)
@@ -123,7 +133,7 @@ Include the following key in your HTTP request header as a key/value pair:
 ```
 
 #### Response (JSON)
-### Code: 201
+#### Code: 201
 
 ```
 {
@@ -143,14 +153,13 @@ Include the following key in your HTTP request header as a key/value pair:
 &emsp;Retrieves all games stored in the API. Games are sorted by their SteamAppID in ascending order. Every SteamAppID is unique.
 
 #### Request
-
-### bash / zsh
+#### bash / zsh
 ```
-curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games/" -H "Key: BOwOKpAMg6Za"
+curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games/"
+-H "Key: BOwOKpAMg6Za"
 ```
-
 #### Response (JSON)
-### Code: 200
+#### Code: 200
 
 ```
 {
@@ -171,7 +180,7 @@ curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsite
 }
 ```
 
-### GetGames by ID
+### GetGameByID
 
 >**GET /api/games/{SteamAppId:int}**
 
@@ -179,14 +188,13 @@ curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsite
 
 #### Request
 
-### bash / zsh
+#### bash / zsh
 ```
-curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games/{SteamAppId:int}" -H "Key: BOwOKpAMg6Za"
+curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games/{SteamAppId:int}"
+-H "Key: BOwOKpAMg6Za"
 ```
-
 #### Response (JSON)
-### Code: 200
-
+#### Code: 200
 ```
 {
   "title": "Counter-Strike 2",
@@ -196,8 +204,6 @@ curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsite
   "steamAppId": 730
 }
 ```
-
-
 ### UpdateGame
 
 >**PUT /api/games/{SteamAppId:int}**
@@ -205,14 +211,11 @@ curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsite
 &emsp;Update a games information by their SteamAppID. SteamAppID cannot be updated.
 
 #### Request
-
-### bash / zsh
+#### bash / zsh
 ```
 ```
-
 #### Response (JSON)
-### Code: 200
-
+#### Code: 200
 ```
 {
   "title": "Hollow Knight",
@@ -223,23 +226,22 @@ curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsite
 }
 ```
 
-### Delete Game
+### DeleteGame
 
 >**DELETE /api/games/{SteamAppId:int}**
 
 &emsp;Delete a game by their SteamAppID.
 
 #### Request
-
-### bash / zsh
+#### bash / zsh
 ```
 ```
-
 #### Response
-### Code: 200
+#### Code: 200
 ```
 Game with SteamAppId: 730 deleted successfully.
 ```
+
 ## Possible Errors
 
 ### Error Codes
@@ -256,7 +258,11 @@ Game with SteamAppId: 730 deleted successfully.
 
 ## Screenshots
 
-
+### GetGames
+### GetGameByID
+### CreateGame
+### UpdateGame
+### DeleteGame
 
 ## Sources
 
