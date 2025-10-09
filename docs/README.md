@@ -11,7 +11,7 @@
 
 - No authorization necessary, Anonymous access level
 > Note that this comes with risks if key is exposed publically.
-- Volatile
+- Volatile storage, data is deleted when runtime ends
 
 ## Use Cases
 Version 1.0 is a lightweight CRUD REST API, and can act as a strong boilerplate for an API project deployed through Azure.
