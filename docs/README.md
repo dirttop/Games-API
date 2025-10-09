@@ -25,13 +25,82 @@ If you would like to use the Games-API, click [here](#using-the-games-api).
 
 #### URL
 
+>**games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net**
+
 #### Authentication
+
+To access the Games-API endpoints a valid authentication key must be presented.
+Include the following key in your HTTP request header as a key/value pair:
+
+> **Key: BOwOKpAMg6Za**
 
 ## Endpoints
 
 #### CreateGame
 
+> **POST /api/games**
+
+&emsp;Creates a new game entry. Only title and SteamAppID are required parameters.
+
+###### Request
+
+```
+```
+
+###### Request Body
+
+```
+{
+    "Title": "Counter-Strike 2",
+    "Genre": "FPS",
+    "Developer": "Valve",
+    "ReleaseYear": "2012",
+    "SteamAppID": 730
+}
+{
+    "Title": "Hollow Knight",
+    "SteamAppID": 367520
+}
+```
+
+###### Response
+
+```
+{
+  "730": {
+    "title": "Counter-Strike 2",
+    "genre": "FPS",
+    "developer": "Valve",
+    "releaseYear": 2012,
+    "steamAppId": 730
+  },
+  "367520": {
+    "title": "Hollow Knight",
+    "genre": null,
+    "developer": null,
+    "releaseYear": 0,
+    "steamAppId": 367520
+  }
+}
+```
+
+
 #### GetGames
+
+>GET /api/games
+
+&emsp;Retrieves all games stored in the API. Games are sorted by their SteamAppID in ascending order.
+
+###### Request
+
+```
+```
+
+###### Response
+
+```
+```
+
 
 #### UpdateGame
 
@@ -42,6 +111,8 @@ If you would like to use the Games-API, click [here](#using-the-games-api).
 #### Error Types
 
 #### Error Messages
+
+## Screenshots
 
 ## Sources
 
