@@ -6,6 +6,7 @@ Developed for CS-432, Cloud Computing
 #### Introduction
 
 This API, inspired by [SteamDB](https://steamdb.info/), is meant to catalogue and store Steam Games and relevant information about them. 
+For stable builds look to version branches. Main development branch may not function as intended.
 
 #### Getting Started
 
@@ -21,3 +22,7 @@ If using later versions, check version specific documentation for deployment.
 Create a new terminal and run the controller with ```func start```. Following initialization local function routes will be generated in the terminal. Use a 
 
 If using ```Version 1.x``` the ```API_KEY``` must be defined in the query header under the specified ```API_HEADER```.
+
+#### Sources
+
+[Boilerplate](https://medium.com/dynamics-online/how-to-build-rest-apis-with-azure-functions-b4d26c88aa1d) by Fahad Ahmed
