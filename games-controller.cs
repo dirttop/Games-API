@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace //YOUR_NAMESPACE_HERE
+namespace YOUR_NAMESPACE_HERE
 {
     public class Game
     {
@@ -22,7 +22,7 @@ namespace //YOUR_NAMESPACE_HERE
     public static class Secrets
     {
         public const string API_HEADER = "Key";
-        public const string API_KEY = "Insert Key Here";
+        public const string API_KEY = "YOUR_API_KEY";
     }
 
     public static class GamesController
@@ -80,16 +80,41 @@ namespace //YOUR_NAMESPACE_HERE
             {
                 return new UnauthorizedResult();
             }
-            
+
             var logger = executionContext.GetLogger("GetGames");
             logger.LogInformation("Getting all games.");
 
             return new OkObjectResult(games);
         }
 
+        [Function("GetGameById")]
+        public static async Task<IActionResult> GetGamesbyID(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "games/{SteamAppId:int}")] HttpRequest req,
+            int SteamAppId, FunctionContext executionContext)
+        {
+            if (!CheckKey(req))
+            {
+                return new UnauthorizedResult();
+            }
+
+            var logger = executionContext.GetLogger("GetGamesbyID");
+            logger.LogInformation($"Found game with SteamAppId={SteamAppId}.");
+
+            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            var requestData = JsonConvert.DeserializeObject<Game>(requestBody);
+
+            if (!games.ContainsKey(SteamAppId))
+            {
+                return new NotFoundObjectResult("Game not found. Input valid ID.");
+            }
+
+            var game = games[SteamAppId];
+            return new OkObjectResult(game);
+        }
+
         [Function("UpdateGame")]
         public static async Task<IActionResult> UpdateGame(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "games/{steamAppId:int}")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "games/{SteamAppId:int}")] HttpRequest req,
             int SteamAppId, FunctionContext executionContext)
         {
             if (!CheckKey(req))
@@ -103,9 +128,9 @@ namespace //YOUR_NAMESPACE_HERE
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             var requestData = JsonConvert.DeserializeObject<Game>(requestBody);
 
-            if (requestData == null || requestData.SteamAppId != SteamAppId)
+            if (requestData == null)
             {
-                return new BadRequestObjectResult("Invalid game data or SteamAppId mismatch.");
+                return new BadRequestObjectResult("Invalid game data.");
             }
 
             if (!games.ContainsKey(SteamAppId))
@@ -120,12 +145,12 @@ namespace //YOUR_NAMESPACE_HERE
             selectedGame.Developer = requestData.Developer;
             selectedGame.ReleaseYear = requestData.ReleaseYear;
 
-            return new OkObjectResult($"Game with SteamAppId={SteamAppId} updated.");
+            return new OkObjectResult(selectedGame);
         }
 
         [Function("DeleteGame")]
         public static async Task<IActionResult> DeleteGame(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "games/{steamAppId:int}")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "games/{SteamAppId:int}")] HttpRequest req,
             int SteamAppId, FunctionContext executionContext)
         {
             if (!CheckKey(req))
