@@ -12,44 +12,41 @@ For stable builds look to version branches. Main development branch may not func
 ## Getting Started
 This section is if you want to deploy the Games-API on your own machine or Azure subscription.
 
-If you want to use the Games-API, go [here](#using-the-games-api).
+>If you want to use the Games-API, go [here](#using-the-games-api).
 
-#### Prerequisites
+### Prerequisites
 - Development Environment
 - Azure Account
 
-#### Dependencies
+### Dependencies
 - C# Compiler
 - Azure Functions
 - Azure Resources
 - Azurite
 
-#### Recommended Packages
+### Recommended Packages For Testing
 - Thunder Client
 - Postman
 
-#### Setup
+### Setup
 
-&emsp;Ensure that all dependencies are installed and working.
+> **Ensure that all dependencies are installed and working.** <br>
 
-&emsp;This project is built in C# with .NET 9.0 
-
-> Screenshots show setup in Visual Studio Code
-<img width="533" height="335" alt="Screenshot 2025-10-09 at 12 04 11 PM" src="https://github.com/user-attachments/assets/8e94d260-ca76-4700-ab4e-dc25c66f4f53" />
+&emsp;This project is built in C# with .NET 9.0
 
 <br>&emsp;Navigate to the Azure Functions button in your local workspace and press 'Create Function'
+> Screenshots show setup in Visual Studio Code
 
-<img width="735" height="127" alt="Screenshot 2025-10-09 at 12 04 32 PM" src="https://github.com/user-attachments/assets/5cb6574b-8235-42b3-b3c4-1b3694d73bd9" />
+<img width="533" height="335" alt="Screenshot 2025-10-09 at 12 04 11 PM" src="https://github.com/user-attachments/assets/8e94d260-ca76-4700-ab4e-dc25c66f4f53" />
 
-<br>&emsp;Select HTTP Trigger template.
+- Select HTTP Trigger template.
+- Input a Function Name and Namespace
+- Access Rights: Anonymous
+- Wait for setup to conclude.
 
-&emsp;Input a Function Name and Namespace
+<br><img width="735" height="127" alt="Screenshot 2025-10-09 at 12 04 32 PM" src="https://github.com/user-attachments/assets/5cb6574b-8235-42b3-b3c4-1b3694d73bd9" />
 
-&emsp;Access Rights: Anonymous
-
-&emsp;Wait for setup to conclude.
-
-#### Running Locally
+### Running Locally
 
 &emsp;In a new terminal:
 ``` func start ```
@@ -57,27 +54,26 @@ If you want to use the Games-API, go [here](#using-the-games-api).
 &emsp;Test with local route.
 > **EX: http://localhost:7071/api/games**
 
-#### Deployment
+### Deployment
 
 &emsp;Create a Function App within Azure prior to deploying with desired settings.
 
+<br>&emsp;Navigate to the Azure Functions button in your local workspace and select 'Deploy to Azure'
 > Screenshots show deployment in Visual Studio Code
 <img width="541" height="342" alt="Screenshot 2025-10-09 at 11 52 52 AM" src="https://github.com/user-attachments/assets/710701e0-1f6b-4d85-8065-6603d3e3275d" />
 
-<br>&emsp;Navigate to the Azure Functions button in your local workspace and select 'Deploy to Azure'
-
-<img width="671" height="128" alt="Screenshot 2025-10-09 at 11 57 09 AM" src="https://github.com/user-attachments/assets/32c2dd51-d16f-423a-a562-565e5ba47afe" />
 <br>&emsp;Select desired Function App and wait for deployment to conclude.
+<br><img width="671" height="128" alt="Screenshot 2025-10-09 at 11 57 09 AM" src="https://github.com/user-attachments/assets/32c2dd51-d16f-423a-a562-565e5ba47afe" />
 
 > Your deployment domain will now be available on Azure. For instruction on testing go [here](#using-the-games-api).
 
 ## Using the Games-API
 
-#### URL
+### URL
 
 >**games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net**
 
-#### Authentication
+### Authentication
 
 To access the Games-API endpoints a valid authentication key must be presented.
 Include the following key in your HTTP request header as a key/value pair:
@@ -86,19 +82,19 @@ Include the following key in your HTTP request header as a key/value pair:
 
 ## Endpoints
 
-#### CreateGame
+### CreateGame
 
 > **POST /api/games**
 
 &emsp;Creates a new game entry. Only Title and SteamAppID are required parameters.
 
-###### Request
+#### Request
 
 ```
 
 ```
 
-###### Request Body
+#### Request Body
 
 ```
 {
@@ -110,7 +106,7 @@ Include the following key in your HTTP request header as a key/value pair:
 }
 ```
 
-###### Response
+#### Response
 
 ```
 {
@@ -123,50 +119,18 @@ Include the following key in your HTTP request header as a key/value pair:
 ```
 
 
-#### GetGames
+### GetGames
 
->GET /api/games
+>**GET /api/games**
 
-&emsp;Retrieves all games stored in the API. Games are sorted by their SteamAppID in ascending order.
+&emsp;Retrieves all games stored in the API. Games are sorted by their SteamAppID in ascending order. Every SteamAppID is unique.
 
-###### Request
-
-```
-```
-
-###### Response
-
-```
-{
-  "730": {
-    "title": "Counter-Strike 2",
-    "genre": "FPS",
-    "developer": "Valve",
-    "releaseYear": 2012,
-    "steamAppId": 730
-  },
-  "367520": {
-    "title": "Hollow Knight",
-    "genre": null,
-    "developer": null,
-    "releaseYear": 0,
-    "steamAppId": 367520
-  }
-}
-```
-
-#### GetGames by ID
-
->GET /api/games
-
-&emsp;Retrieves all games stored in the API. Games are sorted by their SteamAppID in ascending order.
-
-###### Request
+#### Request
 
 ```
 ```
 
-###### Response
+#### Response
 
 ```
 {
@@ -187,17 +151,75 @@ Include the following key in your HTTP request header as a key/value pair:
 }
 ```
 
+### GetGames by ID
 
-#### UpdateGame
+>**GET /api/games/{SteamAppId:int}**
 
-#### Delete Game
+&emsp;Retrieves a games information by their SteamAppID.
 
+#### Request
+
+```
+```
+
+#### Response
+
+```
+{
+  "title": "Counter-Strike 2",
+  "genre": "FPS",
+  "developer": "Valve",
+  "releaseYear": 2012,
+  "steamAppId": 730
+}
+```
+
+
+### UpdateGame
+
+>**PUT /api/games/{SteamAppId:int}**
+
+&emsp;Update a games information by their SteamAppID.
+
+#### Request
+
+#### Response
+
+```
+{
+  "title": "Hollow Knight",
+  "genre": "Metroidvania",
+  "developer": "Team Cherry",
+  "releaseYear": 2017,
+  "steamAppId": 367520
+}
+```
+
+### Delete Game
+
+>**DELETE /api/games/{SteamAppId:int}**
+
+&emsp;Delete a game by their SteamAppID.
+
+#### Request
+
+#### Response
+```
+Game with SteamAppId: 730 deleted successfully.
+```
 ## Possible Errors
-- 
 
-#### Error Types
+### Error Codes
 
-#### Error Messages
+| Endpoint | Code    | Message    |
+| :---:   | :---: | :---: |
+| All | 401   | Unauthorized   |
+| CreateGame | 400   | Title and unique non-zero ID are required.   |
+| CreateGame | 400   | A game with this ID already exists.   |
+| GetGameByID | 404   | Game not found. Input valid ID.   |
+| UpdateGame | 400   | Invalid game data.   |
+| UpdateGame | 404   | Game not found. Input valid ID.   |
+| DeleteGame | 404   | Game not found. Input valid ID.   |
 
 ## Screenshots
 
