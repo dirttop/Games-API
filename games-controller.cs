@@ -69,7 +69,7 @@ namespace YOUR_NAMESPACE_HERE
             };
 
             games.Add(requestData.SteamAppId, game);
-            return new OkObjectResult(game);
+            return new CreatedResult($"/api/games/{game.SteamAppId}",game);
         }
 
         [Function("GetGames")]
@@ -88,7 +88,7 @@ namespace YOUR_NAMESPACE_HERE
         }
 
         [Function("GetGameById")]
-        public static async Task<IActionResult> GetGamesbyID(
+        public static async Task<IActionResult> GetGameByID(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "games/{SteamAppId:int}")] HttpRequest req,
             int SteamAppId, FunctionContext executionContext)
         {
@@ -97,7 +97,7 @@ namespace YOUR_NAMESPACE_HERE
                 return new UnauthorizedResult();
             }
 
-            var logger = executionContext.GetLogger("GetGamesbyID");
+            var logger = executionContext.GetLogger("GetGameByID");
             logger.LogInformation($"Found game with SteamAppId={SteamAppId}.");
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
