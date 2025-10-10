@@ -1,8 +1,11 @@
 # Games-API
-### Version 1.0
+### Version 1.1
 
 C# REST API with CRUD operations, deployed using Azure App Service. 
 Developed for CS-432, Cloud Computing
+
+## Version Specific Features
+- Integrated Azure Key Vault and managed identity for improved security.
 
 ## Introduction
 
@@ -69,6 +72,19 @@ This section is if you want to deploy the Games-API on your own machine or Azure
 
 > Your deployment domain will now be available on Azure. For instruction on testing go [here](#using-the-games-api).
 
+### Setting Up Managed Identity and Key Vault
+
+&emsp; In order to use your deployed API, a Key Vault containing your API key must be created, and the Function App must be granted access.
+&emsp; The following steps outline the process, for further clarification look to [this video]("https://www.youtube.com/watch?v=b21EQvfjvHc&t=789s").
+- Enable managed idenity in your Function App
+- Create a Key Vault
+- Give yourself Adiministatrative Access to your new Key Vault
+- Create a Secret for your API Key
+- Give the Key Vault Secrets User role assignment to your Function App
+- Add a reference to the Key Vault in your Function App configuration
+- Save your configuration and await confirmation from Azure
+- Test your function app using your new API Key
+
 ## Using the Games-API
 
 ### URL
@@ -78,9 +94,9 @@ This section is if you want to deploy the Games-API on your own machine or Azure
 ### Authentication
 
 To access the Games-API endpoints a valid authentication key must be presented.
-Include the following key in your HTTP request header as a key/value pair:
-
-> **Key: BOwOKpAMg6Za**
+The key must be included in the HTTP request header as a key/value pair.
+Access to the API is currently unavailable publically.
+Any materials presented in the documentation containing a key present an outdated Secret.
 
 ## Game Parameters
 > Every game object contains the following JSON parameters, with only Title and SteamAppID being required fields.
@@ -110,7 +126,7 @@ Include the following key in your HTTP request header as a key/value pair:
 ```
 curl -X POST "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games" \
 -H "Content-Type: application/json" \
--H "Key: BOwOKpAMg6Za" \
+-H "Key: INSERT_KEY_HERE" \
 -d '{
     "Title": "Game Title",
     "Genre": "Genre Name",
@@ -156,7 +172,7 @@ curl -X POST "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.
 #### bash / zsh
 ```
 curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games/"
--H "Key: BOwOKpAMg6Za"
+-H "Key: INSERT_KEY_HERE"
 ```
 #### Response (JSON)
 #### Code: 200
@@ -191,7 +207,7 @@ curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsite
 #### bash / zsh
 ```
 curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games/{SteamAppId:int}"
--H "Key: BOwOKpAMg6Za"
+-H "Key: INSERT_KEY_HERE"
 ```
 #### Response (JSON)
 #### Code: 200
@@ -215,7 +231,7 @@ curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsite
 ```
 curl -X PUT "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games/{SteamAppId:int}" \
 -H "Content-Type: application/json" \
--H "Key: BOwOKpAMg6Za" \
+-H "Key: INSERT_KEY_HERE" \
 -d '{
     "Title": "Game Title",
     "Genre": "Genre Name",
