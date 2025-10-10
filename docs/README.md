@@ -262,7 +262,7 @@ curl -X PUT "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.n
 #### bash / zsh
 ```
 curl -L -X DELETE "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games/{SteamAppId:int}"
--H "Key: BOwOKpAMg6Za"
+-H "Key: INSERT_KEY_HERE"
 ```
 #### Response
 #### Code: 200
