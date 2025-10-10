@@ -113,7 +113,7 @@ curl -X POST "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.
 -H "Key: BOwOKpAMg6Za" \
 -d '{
     "Title": "Game Title",
-    "Genre": "Genre Title",
+    "Genre": "Genre Name",
     "Developer": "Developer Name",
     "ReleaseYear": 0000,
     "SteamAppID": 1
@@ -213,6 +213,15 @@ curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsite
 #### Request
 #### bash / zsh
 ```
+curl -X PUT "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games/{SteamAppId:int}" \
+-H "Content-Type: application/json" \
+-H "Key: BOwOKpAMg6Za" \
+-d '{
+    "Title": "Game Title",
+    "Genre": "Genre Name",
+    "Developer": "Developer Name",
+    "ReleaseYear": 0000
+}'
 ```
 #### Response (JSON)
 #### Code: 200
@@ -235,6 +244,8 @@ curl -L -X GET "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsite
 #### Request
 #### bash / zsh
 ```
+curl -L -X DELETE "https://games-api-a0gveveefgdyfcap.canadacentral-01.azurewebsites.net/api/games/{SteamAppId:int}"
+-H "Key: BOwOKpAMg6Za"
 ```
 #### Response
 #### Code: 200
@@ -258,11 +269,25 @@ Game with SteamAppId: 730 deleted successfully.
 
 ## Screenshots
 
-### GetGames
-### GetGameByID
 ### CreateGame
+<img width="945" height="306" alt="Screenshot 2025-10-09 at 10 25 19 PM" src="https://github.com/user-attachments/assets/bb2dd25d-ac1b-4225-8cb2-29740b1e581a" />
+<img width="987" height="308" alt="Screenshot 2025-10-09 at 10 26 02 PM" src="https://github.com/user-attachments/assets/a069b90b-aa5a-4cd8-b2e2-de8ae72ae3a8" />
+<img width="980" height="299" alt="Screenshot 2025-10-09 at 10 26 38 PM" src="https://github.com/user-attachments/assets/8d875cc2-473e-4507-bb58-6b797cc0bf0b" />
+
+### GetGames
+<img width="963" height="262" alt="Screenshot 2025-10-09 at 10 27 24 PM" src="https://github.com/user-attachments/assets/8c5e4a62-f4da-41cd-b4c1-dc5524e7aa80" />
+
+### GetGameByID
+<img width="981" height="238" alt="Screenshot 2025-10-09 at 10 27 53 PM" src="https://github.com/user-attachments/assets/c06edc68-f4ee-4628-9ed5-1e97fd4ab145" />
+<img width="970" height="247" alt="Screenshot 2025-10-09 at 10 28 10 PM" src="https://github.com/user-attachments/assets/235ed308-52ca-4d6f-916c-8846b2093bd7" />
+
 ### UpdateGame
+<img width="948" height="288" alt="Screenshot 2025-10-09 at 10 29 03 PM" src="https://github.com/user-attachments/assets/ea50888c-1340-44ae-930a-ef448a660e9e" />
+<img width="989" height="285" alt="Screenshot 2025-10-09 at 10 29 25 PM" src="https://github.com/user-attachments/assets/9b2d2849-071f-46e9-8a7d-14968a83a2f1" />
+
 ### DeleteGame
+<img width="982" height="181" alt="Screenshot 2025-10-09 at 10 29 45 PM" src="https://github.com/user-attachments/assets/303e27e9-1d10-4f6d-a54a-3a65271d9886" />
+<img width="978" height="193" alt="Screenshot 2025-10-09 at 10 30 07 PM" src="https://github.com/user-attachments/assets/a02e0dfe-0572-446a-8d03-af1235a7f175" />
 
 ## Sources
 
