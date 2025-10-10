@@ -269,6 +269,9 @@ Game with SteamAppId: 730 deleted successfully.
 
 ## Screenshots
 
+### Authentication Error
+<img width="980" height="304" alt="Screenshot 2025-10-09 at 10 36 44 PM" src="https://github.com/user-attachments/assets/4c710da2-6e67-49fe-a5b9-794c8b490888" />
+
 ### CreateGame
 <img width="945" height="306" alt="Screenshot 2025-10-09 at 10 25 19 PM" src="https://github.com/user-attachments/assets/bb2dd25d-ac1b-4225-8cb2-29740b1e581a" />
 <img width="987" height="308" alt="Screenshot 2025-10-09 at 10 26 02 PM" src="https://github.com/user-attachments/assets/a069b90b-aa5a-4cd8-b2e2-de8ae72ae3a8" />
