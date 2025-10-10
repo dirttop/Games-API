@@ -10,28 +10,15 @@ using System.Threading.Tasks;
 
 namespace YOUR_NAMESPACE_HERE
 {
-    public class Game
-    {
-        public string Title { get; set; }
-        public string Genre { get; set; }
-        public string Developer { get; set; }
-        public int ReleaseYear { get; set; }
-        public int SteamAppId { get; set; }
-    }
-    
-    public static class Secrets
-    {
-        public const string API_HEADER = "Key";
-        public const string API_KEY = "YOUR_API_KEY";
-    }
-
-    public static class GamesController
+     public static class GamesController
     {
         static Dictionary<int, Game> games = new Dictionary<int, Game>();
 
         private static bool CheckKey(HttpRequest req)
         {
-            return req.Headers[Secrets.API_HEADER] == Secrets.API_KEY;
+            const string headerName = "Key";
+            var expectedKey = System.Environment.GetEnvironmentVariable("API_KEY");
+            return req.Headers[headerName] == expectedKey;
         }
 
         [Function("CreateGame")]
