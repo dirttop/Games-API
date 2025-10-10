@@ -75,7 +75,8 @@ This section is if you want to deploy the Games-API on your own machine or Azure
 ### Setting Up Managed Identity and Key Vault
 
 &emsp; In order to use your deployed API, a Key Vault containing your API key must be created, and the Function App must be granted access.
-&emsp; The following steps outline the process, for further clarification look to [this video]("https://www.youtube.com/watch?v=b21EQvfjvHc&t=789s").
+
+&emsp; The following steps outline the process, for further clarification look to [this video](https://www.youtube.com/watch?v=b21EQvfjvHc&t=789s).
 - Enable managed idenity in your Function App
 - Create a Key Vault
 - Give yourself Adiministatrative Access to your new Key Vault
